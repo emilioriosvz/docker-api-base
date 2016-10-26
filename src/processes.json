@@ -1,0 +1,13 @@
+{
+  "apps": [{
+    "name": "app",
+    "script": "./app.js",
+    "ignore_watch" : ["node_modules"],
+    "watch_options": {
+      "followSymlinks": false
+    },
+    "instances": "1",
+    "merge_logs": true,
+    "log_date_format": "YYYY-MM-DD HH:mm:SS"
+  }]
+}

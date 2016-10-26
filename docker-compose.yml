@@ -1,0 +1,24 @@
+version: "2"
+
+services:
+  app:
+    build: src/
+    container_name: app
+    restart: always
+    links:
+      - mongodb:mongodb
+    ports:
+      - 3000:3000
+      - 5858:5858
+    volumes:
+      - ./src:/opt/src
+      - /opt/src/node_modules #http://stackoverflow.com/questions/30043872/docker-compose-node-modules-not-present-in-a-volume-after-npm-install-succeeds
+    environment:
+      NODE_ENV: development
+
+  mongodb:
+    image: mongo:3.0.4
+    container_name: mongodb
+    ports:
+      - 27017:27017
+    command: --smallfiles --rest
